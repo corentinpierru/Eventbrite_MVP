@@ -1,4 +1,6 @@
 class Event < ApplicationRecord
+  belongs_to :user
+
   validates :start_date, :presence => { :message => "must be a valid date/time" }
 
   validates :title, :presence => { :message => "must have a title"}
