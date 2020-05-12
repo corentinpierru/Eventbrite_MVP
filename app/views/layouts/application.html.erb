@@ -18,24 +18,35 @@
     <div class="d-flex flex-column p-3 px-md-4 bg-info border-bottom shadow-sm">
       <h5 class="my-0 font-weight-normal text-white">Eventbrite Mvp</h5>
         <nav class="navbar-toggler d-flex justify-content-between">
-        <div class="pt-2">
-        <a class="p-2 text-white" <%= link_to "Page d'accueil", "#" %></a>
-        <a class="p-2 text-white" <%= link_to "Nouvel Event", '#' %></a>
-        </div>
-        <div>
-        <% if session[:user_id] == nil %>
-        <a class="p-2 text-dark btn btn-light" <%= link_to "Sign in", new_user_registration_path %></a>
-        <a class="p-2 text-dark btn btn-light" <%= link_to "Log in", new_user_session_path %></a>
-        <% else %>
-        <a class="p-2 text-white btn btn-danger" <%= link_to "Sign out", "#", method: :delete %></a>
-        <% end %>
-        </div>
+          <div class="pt-2">
+            <a class="p-2 text-white" <%= link_to "Page d'accueil", root_path %></a>
+            <a class="p-2 text-white" <%= link_to "Nouvel Event", new_event_path %></a>
+          </div>
+          <div>
+            <% if user_session == nil %>
+              <a class="p-2 text-dark btn btn-light" <%= link_to "Sign in", new_user_registration_path %></a>
+              <a class="p-2 text-dark btn btn-light" <%= link_to "Log in", new_user_session_path %></a>
+            <% else %>
+              <div class="p-2 text-dark btn btn-light"> <%= link_to "Mon profil", user_path(current_user.id) %></div>
+              <div class="btn btn-danger"><%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item text-white" %></div>
+            <%end %>
+          </div>
         </nav>
     </div>
     
   </head>
 
   <body>
+    <% if flash[:success] %>
+      <div class="alert alert-success" role="alert">
+        <%= flash[:success] %>
+      </div>
+    <%end %>
+    <% if flash[:danger] %>
+      <div class="alert alert-danger" role="alert">
+        <%= flash[:danger] %>
+      </div>
+    <%end %>
     <%= yield %>
   </body>
 </html>

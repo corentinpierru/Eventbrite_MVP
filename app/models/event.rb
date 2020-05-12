@@ -1,11 +1,10 @@
 class Event < ApplicationRecord
-  belongs_to :user
+  belongs_to :administrator, class_name: "User"
 
   validates :start_date, :presence => { :message => "must be a valid date/time" }
 
   validates :title, :presence => { :message => "must have a title"}
-  validates :title,
-  length: { in: 6..20 }
+  
 
   validates :description,
   length: { in: 20..2000},
@@ -14,6 +13,11 @@ class Event < ApplicationRecord
   validates :price, :numericality => {greater_than: 0, less_than:2001}, presence: true
   
   validates :location, presence: true 
+
+  def end_date
+    end_date_time_to_integer_in_seconds = start_date.to_i + duration * 60
+    return Time.at(end_date_time_to_integer_in_seconds)
+  end
 
   private
   validate :start_date_after_now

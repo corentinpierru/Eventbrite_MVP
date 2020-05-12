@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_12_084542) do
+ActiveRecord::Schema.define(version: 2020_05_12_141428) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,18 +24,18 @@ ActiveRecord::Schema.define(version: 2020_05_12_084542) do
     t.string "location"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "user_id"
-    t.index ["user_id"], name: "index_events_on_user_id"
+    t.bigint "administrator_id"
+    t.index ["administrator_id"], name: "index_events_on_administrator_id"
   end
 
   create_table "participations", force: :cascade do |t|
     t.string "strip_customer_id"
-    t.bigint "user_id"
     t.bigint "event_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "attendee_id"
+    t.index ["attendee_id"], name: "index_participations_on_attendee_id"
     t.index ["event_id"], name: "index_participations_on_event_id"
-    t.index ["user_id"], name: "index_participations_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -53,5 +53,4 @@ ActiveRecord::Schema.define(version: 2020_05_12_084542) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "events", "users"
 end

@@ -1,0 +1,33 @@
+<div class="container pt-4">
+<div class="card-deck text-center">
+  <div class="card mb-4 shadow-sm">
+    <!-- Card header -->
+    <div class="card-header">
+      <h3 class="my-0 font-weight-normal"><%= @user.first_name%></h3>
+    </div>
+    <!-- Card body -->
+    <div class="card-body text-left my-auto">
+      <p> Email : <%= @user.email %> </p>
+      <p> Profil créé le : <%= @user.created_at %> </p>
+      <p> Profil mis à jour le : <%= @user.updated_at %> </p>
+      </br>
+      <p class="font-weight-bold"> Description :</p>
+      <p class="font-weight-bold"> <%= @user.description %> </p>
+<p class="text-center font-weight-bold"> Tes événements </p>
+<% Event.all.each do |event| %>
+  <!-- Pour chaque gossip verifie que le nom du user de la city correspond -->
+  <% if event.administrator.id == @user.id %>
+  <div class="container">
+      <div class="card mb-4 shadow-sm">
+        <div class="card-header text-center">       
+          <p> <%= event.title %></p>
+          </div>
+          <div class="card-body">
+          <p> <%= event.description %></p>
+        </div>       
+      </div>
+    </div>
+  
+  <% end %>
+<% end %>
+</div>

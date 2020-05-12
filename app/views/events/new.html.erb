@@ -1,0 +1,25 @@
+<div class= "container text-center pt-2">
+  <h1>Crée ton event</h1>
+    <form action="/events" method="POST"></br>
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input class="form-control" placeholder="start_date" type="text" name="start_date"></br>
+      <input class="form-control" placeholder="duration in minutes (multiple of 5)" type="integer" name="duration"></br>
+      <input class="form-control" placeholder="title" type="text" name="title"></br>
+      <input class="form-control" placeholder="description" type="text" name="description"></br>
+      <input class="form-control" placeholder="price" type="integer" name="price"></br>
+      <input class="form-control" placeholder="location" type="text" name="location"></br> 
+      <input class="btn btn-info" type="submit" value="Crées ton event">
+    </form>
+</div>
+<% if @event_new%>
+<% if @event_new.errors.any? %>
+  <p>Nous n'avons pas réussi à créer le potin pour la (ou les) raison(s) suivante(s) :</p>
+  <ul>
+    <% @event_new.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+  <%end%>
+<%end%>
+
+

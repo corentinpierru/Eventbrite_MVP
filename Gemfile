@@ -53,6 +53,7 @@ end
 
 gem 'dotenv-rails'
 gem 'devise'
+gem 'table_print'
 
 gem 'faker'
 

@@ -1,0 +1,21 @@
+<div class="container pt-4">
+  <div class="card-deck text-center">
+    <div class="card mb-4 shadow-sm">
+      <!-- Card header -->
+      <div class="card-header">
+        <h3 class="my-0 font-weight-normal"><%= @event.title%></h3>
+      </div>
+      <!-- Card body -->
+      <div class="card-body text-left my-auto">
+        <p> Description : <%= @event.description %> </p>
+        <p> il y a <%= Participation.where(event: params{'id'}).size %> participants à cet événement </p>
+        <p> Contactes le créateur à <%= @event.administrator.email %> </p>
+        </br>
+        <p class="font-weight-bold"> date de début : <%= @event.start_date %></p>
+        <p class="font-weight-bold"> date de fin : <%= @event.end_date %> </p> <!-- méthode end_date dans le model -->
+        <p class="font-weight-bold"> lieu: <%= @event.location %> </p>
+        <p class="font-weight-bold large"> prix: <%= @event.price %> </p>
+      </div>
+    </div>
+  </div>
+</div>
