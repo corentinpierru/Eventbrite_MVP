@@ -1,24 +1,9 @@
-# README
+Hello jeune moussaillon,
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Tu trouveras ici le lien vers le site Heroku,
 
-Things you may want to cover:
+Toutes les fonctionnalités demandées fonctionnent correctement (normalement), sauf le Mailer car mon crédit gratuit SendGrid est épuisé (j'ai eu la bonne idée de créer par trois fois 100 utilisateurs et donc d'envoyer 300 mails en peu de temps et apparemment ça plait pas bcp), je crois que c'est pour ça que les emails fonctionnent plus car j'ai une erreur : "SMTP fail, not enough credit", mais à voir.
 
-* Ruby version
+Voici le lien de mon app heroku : https://eventbrite-mvp.herokuapp.com/
 
-* System dependencies
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
