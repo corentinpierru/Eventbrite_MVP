@@ -1,12 +1,38 @@
 <!DOCTYPE html>
 <html>
   <head>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <!-- Font awesome -->
+  <script src="https://kit.fontawesome.com/f80ccd0328.js" crossorigin="anonymous"></script>
+<!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  
     <title>EventbriteMvp</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <div class="d-flex flex-column p-3 px-md-4 bg-info border-bottom shadow-sm">
+      <h5 class="my-0 font-weight-normal text-white">Eventbrite Mvp</h5>
+        <nav class="navbar-toggler d-flex justify-content-between">
+        <div class="pt-2">
+        <a class="p-2 text-white" <%= link_to "Page d'accueil", "#" %></a>
+        <a class="p-2 text-white" <%= link_to "Nouvel Event", '#' %></a>
+        </div>
+        <div>
+        <% if session[:user_id] == nil %>
+        <a class="p-2 text-dark btn btn-light" <%= link_to "Sign in", new_user_registration_path %></a>
+        <a class="p-2 text-dark btn btn-light" <%= link_to "Log in", new_user_session_path %></a>
+        <% else %>
+        <a class="p-2 text-white btn btn-danger" <%= link_to "Sign out", "#", method: :delete %></a>
+        <% end %>
+        </div>
+        </nav>
+    </div>
+    
   </head>
 
   <body>
